@@ -32,6 +32,7 @@ export const ExpenseTracker = () => {
       </div>
       <div className="transactions">
         <h3>Transactions</h3>
+        <p>See Below</p>
       </div>
     </>
   );
