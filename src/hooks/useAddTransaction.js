@@ -11,7 +11,7 @@ export const useAddTransaction = () => {
             description:"",
             transactionAmount:0,
             transactionTypes:"",
-            createdAt:serverTimestamp
+            createdAt:serverTimestamp()
         })
     }
     return {AddTransaction}
