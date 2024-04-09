@@ -10,24 +10,29 @@ export const useGetTransactionInfo = () => {
 
     const [transactions, setTransactions] = useState([])
     const getTransactions = async () => {
+
+        let unsubscribe;
+
         try {
             const queryTransactions = query(
-                transactionCollectionRef, 
+                transactionCollectionRef,
                 where("userID", "==", userID),
                 orderBy("createdAt")
             )
-            onSnapshot(queryTransactions, (snapshot) => {
-                const docs = {}
+            unsubscribe = onSnapshot(queryTransactions, (snapshot) => {
+                const docs = []
 
                 snapshot.forEach((doc) => {
-                    const data = doc.data
+                    const data = doc.data()
                     const id = doc.id
 
-                    docs.push(data,id)
+                    docs.push({...data, id})
                 })
 
                 setTransactions(docs);
             })
+
+            return () => { unsubscribe() }
         } catch (err) {
             console.error(err);
         }
