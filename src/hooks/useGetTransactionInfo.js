@@ -26,7 +26,7 @@ export const useGetTransactionInfo = () => {
                     const data = doc.data()
                     const id = doc.id
 
-                    docs.push({...data, id})
+                    docs.push({ ...data, id })
                 })
 
                 setTransactions(docs);
