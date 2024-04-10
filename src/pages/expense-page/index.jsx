@@ -77,6 +77,7 @@ export const ExpenseTracker = () => {
               <li>
                 <h4>{description}</h4>
                 <p>{transactionAmount} ~ {transactionType}</p>
+                
               </li>
             </>
           })}
