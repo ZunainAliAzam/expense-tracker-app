@@ -4,7 +4,7 @@ import { useGetTransactionInfo } from "../../hooks/useGetTransactionInfo";
 import { useGetUserInfo } from "../../hooks/useGetUserInfo";
 import { auth } from "../../config/firebase-config";
 import { signOut } from "firebase/auth";
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 
 import "./styles.css";
 export const ExpenseTracker = () => {
@@ -18,13 +18,11 @@ export const ExpenseTracker = () => {
   const [transactionType, setTransactionType] = useState("expense");
 
   const signUserOut = async () => {
-
     try {
       await signOut(auth);
       localStorage.clear();
-      navigate("/")
+      navigate("/");
     } catch (err) {
-
       console.log(err);
     }
   };
