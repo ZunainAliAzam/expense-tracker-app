@@ -17,10 +17,13 @@ export const ExpenseTracker = () => {
   const [transactionType, setTransactionType] = useState("expense");
 
   const signUserOut = async () => {
+
     try {
       await signOut(auth);
       localStorage.clear();
+
     } catch (err) {
+      
       console.log(err);
     }
   };
