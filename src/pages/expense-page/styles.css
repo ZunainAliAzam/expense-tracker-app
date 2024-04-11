@@ -1,29 +1,35 @@
+.start{
+    text-align: center;
+}
 .expense-tracker {
-    width: 100vh;
+    width: 100%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     color: #023047;
 }
 
-.expense-tracker h1 {
-    font-size: 40px;
+.container {
+    display: flex;
+    flex-direction: row;
 }
-
 .summary {
     display: flex;
     flex-direction: row;
 }
-
-.expense {
-    margin-left: 10px;
+.income {
+    margin: 0 20px;
 }
 
-.inputs {
-    margin-top: 4.5rem;
+.inputs{
+    display: flex;
+    flex-direction: row;
 }
 
+.description{
+    margin-right: 1rem;
+}
 .inputs p {
     font-weight: 500;
     margin-bottom: 0.5rem;
@@ -38,13 +44,10 @@
 
 .expense-tracker button {
     background-color: #023047;
-    margin-top: 1rem;
     border: none;
     color: white;
     padding: 5px 15px;
-    margin-left: 1.25rem;
-    margin-right: 1.25rem;
-    margin-bottom: 0px;
+    margin: 1rem 1.25rem;
     font-size: 15px;
     border-radius: 5px;
     cursor: pointer;
@@ -52,9 +55,9 @@
 
 .profile {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    margin-left: 200px;
+    margin-bottom: 1rem;
 }
 
 .profile-photo {
@@ -64,15 +67,14 @@
 
 .signout-btn {
     border: none;
-    margin-top: 50px;
     width: 150px;
     background: #3498db;
     background-image: linear-gradient(to bottom, #3498db, #2980b9);
-    border-radius: 10px;
+    border-radius: 5px;
     color: #fff;
-    font-size: 22px;
-    font-weight: bold;
-    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 5px 15px;
     text-decoration: none;
 }
 
@@ -83,14 +85,20 @@
     cursor: pointer;
 }
 
+.transactions-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .transactions {
-    margin-left: 430px;
-    margin-top: 20px;
+    /* margin-left: 430px;
+    margin-top: 20px; */
     width: 600px;
     height: 400px;
     overflow: auto;
     padding-left: 20px;
     border: 3px solid #023047;
+    font-size: 14px;
 }
 .ending{
     margin-top: 20px;
