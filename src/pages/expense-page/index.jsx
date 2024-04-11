@@ -106,6 +106,7 @@ export const ExpenseTracker = () => {
           })}
         </ul>
       </div>
+      <div className="ending"></div>
     </>
   );
 };
