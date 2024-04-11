@@ -4,6 +4,7 @@ import { useGetTransactionInfo } from "../../hooks/useGetTransactionInfo";
 import { useGetUserInfo } from "../../hooks/useGetUserInfo";
 import { auth } from "../../config/firebase-config";
 import { signOut } from "firebase/auth";
+import {useNavigate} from "react-router-dom"
 
 import "./styles.css";
 export const ExpenseTracker = () => {
@@ -11,7 +12,7 @@ export const ExpenseTracker = () => {
   const { transactions } = useGetTransactionInfo();
 
   const { name, profilePhoto } = useGetUserInfo();
-
+  const navigate = useNavigate();
   const [description, setDescription] = useState("");
   const [transactionAmount, setTransactionAmount] = useState(0);
   const [transactionType, setTransactionType] = useState("expense");
@@ -21,9 +22,9 @@ export const ExpenseTracker = () => {
     try {
       await signOut(auth);
       localStorage.clear();
-
+      navigate("/")
     } catch (err) {
-      
+
       console.log(err);
     }
   };
