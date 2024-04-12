@@ -12,10 +12,10 @@ export const ExpenseTracker = () => {
   const { transactions } = useGetTransactionInfo();
 
   const { name, profilePhoto } = useGetUserInfo();
-  const navigate = useNavigate();
   const [description, setDescription] = useState("");
   const [transactionAmount, setTransactionAmount] = useState(0);
   const [transactionType, setTransactionType] = useState("expense");
+  const navigate = useNavigate();
 
   const signUserOut = async () => {
     try {
