@@ -29,6 +29,9 @@ export const ExpenseTracker = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     addTransaction({ description, transactionAmount, transactionType });
+
+    setDescription("");
+    setTransactionAmount("");
   };
 
   return (
@@ -71,6 +74,7 @@ export const ExpenseTracker = () => {
                 <input
                   type="text"
                   placeholder="Description"
+                  value = {description}
                   required
                   onChange={(e) => setDescription(e.target.value)}
                 />
@@ -80,6 +84,7 @@ export const ExpenseTracker = () => {
                 <input
                   type="text"
                   placeholder="Amount"
+                  value={transactionAmount}
                   required
                   onChange={(e) => setTransactionAmount(e.target.value)}
                 />
