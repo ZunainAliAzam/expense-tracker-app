@@ -1,19 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth, provider } from "../../config/firebase-config";
 import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
-// import {useGetUserInfo} from "../../hooks/useGetUserInfo"
+import { useGetUserInfo } from "../../hooks/useGetUserInfo";
 import "./styles.css";
 
 export const Auth = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  
+
+  const { isAuth } = useGetUserInfo();
   const navigate = useNavigate();
-  // const {isAuth} = useGetUserInfo()
-  // if (isAuth) {
-  //   return <Navigate to="/expense" />;
-  // }
 
   const signInWithGoogle = async () => {
     const results = await signInWithPopup(auth, provider);
@@ -28,8 +25,11 @@ export const Auth = (props) => {
     localStorage.setItem("auth", JSON.stringify(authInfo));
     navigate("/expense");
   };
+  // const {isAuth} = useGetUserInfo()
+  // if (isAuth) {
+  //   return <Navigate to="/expense" />;
+  // }
 
-  
   const onButtonClick = () => {
     let isValid = true;
 
