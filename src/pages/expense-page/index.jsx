@@ -9,14 +9,14 @@ import { useNavigate } from "react-router-dom";
 import "./styles.css";
 export const ExpenseTracker = () => {
   const { addTransaction } = useAddTransaction();
-  const { transactions } = useGetTransactionInfo();
-
+  const { transactions, transactionsTotal } = useGetTransactionInfo();
   const { name, profilePhoto } = useGetUserInfo();
   const [description, setDescription] = useState("");
   const [transactionAmount, setTransactionAmount] = useState(0);
   const [transactionType, setTransactionType] = useState("expense");
   const navigate = useNavigate();
 
+  const { balance, expenses, income } = transactionsTotal;
   const signUserOut = async () => {
     try {
       await signOut(auth);
@@ -47,17 +47,19 @@ export const ExpenseTracker = () => {
           <div className="container">
             <div className="balance">
               <h3>Your Balance</h3>
-              <h2>$0.00</h2>
+              {balance >= 0 ? <h2>${balance}</h2> : 
+              <h2>-${balance * -1} </h2>
+              }
             </div>
 
             <div className="summary">
               <div className="income">
                 <h4>Income</h4>
-                <p>$0.00</p>
+                <p>$ {income}</p>
               </div>
               <div className="expense">
                 <h4>Expense</h4>
-                <p>$0.00</p>
+                <p>$ {expenses}</p>
               </div>
             </div>
           </div>

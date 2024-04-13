@@ -27,8 +27,9 @@ export const useGetTransactionInfo = () => {
             )
             unsubscribe = onSnapshot(queryTransactions, (snapshot) => {
                 const docs = [];
-                let totalIncome;
+                let totalIncome=0;
                 let totalExpenses = 0;
+                let totalBalance = 0;
 
                 snapshot.forEach((doc) => {
                     const data = doc.data()
@@ -42,10 +43,9 @@ export const useGetTransactionInfo = () => {
                         totalIncome += Number(data.transactionAmount)
                     }
                 })
-
                 setTransactions(docs);
-
-                let totalBalance = totalIncome - totalExpenses
+                
+                totalBalance = totalIncome - totalExpenses
                 
                 setTransactionsTotal({
                     balance:totalBalance,
@@ -63,6 +63,6 @@ export const useGetTransactionInfo = () => {
     useEffect(() => {
         getTransactions()
     }, [])
-    
+
     return { transactions, transactionsTotal}
 }
