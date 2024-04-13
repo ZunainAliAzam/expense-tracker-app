@@ -1,13 +1,15 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 import { auth, provider } from "../../config/firebase-config";
 import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import {useGetUserInfo} from "../../hooks/useGetUserInfo"
 import "./styles.css";
 
 export const Auth = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const {isAuth} = useGetUserInfo()
   const navigate = useNavigate();
   const signInWithGoogle = async () => {
     const results = await signInWithPopup(auth, provider);
@@ -23,6 +25,10 @@ export const Auth = (props) => {
     navigate("/expense");
   };
 
+  if (isAuth) {
+    return <Navigate to="/expense" />;
+  }
+  
   const onButtonClick = () => {
     let isValid = true;
 
